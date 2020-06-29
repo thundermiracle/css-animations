@@ -1,0 +1,39 @@
+{
+  "name": "css-animations",
+  "version": "1.0.0",
+  "description": "Use css only to animate site.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thundermiracle/css-animations.git"
+  },
+  "keywords": [],
+  "author": "ThunderMiracle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thundermiracle/css-animations/issues"
+  },
+  "homepage": "https://github.com/thundermiracle/css-animations#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.8.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.6",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  }
+}
