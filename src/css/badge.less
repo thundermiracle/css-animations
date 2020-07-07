@@ -200,4 +200,62 @@ main {
       transition: transform 0.5s cubic-bezier(0, 1, 0.3, 1);
     }
   }
+
+  .button {
+    background: none;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      background: rgba(200, 200, 200, 0.8);
+      border-radius: 0.25em;
+      content: '';
+      position: absolute;
+      top: 0.5em;
+      right: 0.1em;
+      bottom: 0.1em;
+      left: 0.1em;
+      z-index: -1;
+    }
+    &::after {
+      background: #1a9e3f;
+      border-radius: 0.25em;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.1);
+
+      &::before {
+        transform: translateY(0.1em);
+      }
+
+      &::after {
+        background: #28b54f;
+      }
+    }
+
+    &:active {
+      transform: translateY(0.2em);
+      transition: none;
+
+      &::before {
+        transform: translateY(-0.1em);
+        transition: none;
+      }
+    }
+  }
+
+  // .button,
+  // .button::before,
+  // .button::after {
+  //   transition: all 0.5s cubic-bezier(1, 1, 0.3, 1);
+  // }
 }
