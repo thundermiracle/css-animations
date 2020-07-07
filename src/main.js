@@ -1,6 +1,7 @@
-import './css/main.css';
-import './css/header.css';
-import './css/link.css';
+import './css/main.less';
+import './css/header.less';
+import './css/link.less';
+import './css/badge.less';
 
 /**
  * JS for header

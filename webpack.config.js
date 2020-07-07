@@ -37,6 +37,20 @@ const commonConfig = {
         ],
       },
       {
+        test: /\.less$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: devMode,
+            },
+          },
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ],
+      },
+      {
         test: /\.html$/,
         use: ['html-loader'],
       },
