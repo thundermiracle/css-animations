@@ -80,6 +80,7 @@ const commonConfig = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
+      minify: false,
     }),
     new CleanWebpackPlugin(),
   ],
