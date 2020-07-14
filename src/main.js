@@ -3,6 +3,7 @@ import './css/header.less';
 import './css/link.less';
 import './css/badge.less';
 import './css/scroll.less';
+import './css/parallax.less';
 
 /**
  * JS for header
@@ -71,3 +72,11 @@ function loop() {
 }
 
 loop();
+
+/* parallax */
+new Rellax('.rellax', {
+  center: true,
+});
+new Rellax('.rellax-non-centered', {
+  center: false,
+});

@@ -40,3 +40,25 @@ header {
     transform: none;
   }
 }
+
+html {
+  overflow-x: hidden;
+}
+.slide-in-card {
+  background: #fff;
+  box-shadow: 1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
+  padding: 0.5em 50px 0.5em 1em;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  margin-bottom: 150px;
+  transform: rotateZ(-5deg) translateX(500px);
+  transition: all 0.5s 1s cubic-bezier(0, 1, 0.3, 1);
+  width: 400px;
+  z-index: 10;
+
+  &.is-visible {
+    opacity: 1;
+    transform: rotateZ(5deg) translateX(-50px);
+  }
+}

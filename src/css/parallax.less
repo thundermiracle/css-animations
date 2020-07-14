@@ -1,0 +1,57 @@
+body {
+  background-color: grey;
+}
+p {
+  z-index: 10;
+}
+
+.floating-rocks {
+  position: absolute;
+}
+
+.front-one {
+  right: 0;
+  bottom: 8em;
+}
+
+.front-two {
+  left: -2em;
+  bottom: 0em;
+}
+
+.back-one {
+  left: 6em;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.back-two {
+  opacity: 0.1;
+  right: -10em;
+  z-index: 0;
+}
+
+.planet-earth {
+  border-radius: 50%;
+  left: -3em;
+  opacity: 0.8;
+}
+
+main {
+  background: url(../images/moon.jpg) top center no-repeat;
+  background-size: cover;
+  height: 1014px;
+  position: relative;
+
+  .heading {
+    color: white;
+    font-size: 10em;
+    left: 0;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: -1.25em;
+  }
+}
