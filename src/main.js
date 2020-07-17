@@ -4,6 +4,7 @@ import './css/link.less';
 import './css/badge.less';
 import './css/scroll.less';
 import './css/parallax.less';
+import './css/mouseleave.less';
 
 /**
  * JS for header
@@ -79,4 +80,21 @@ new Rellax('.rellax', {
 });
 new Rellax('.rellax-non-centered', {
   center: false,
+});
+
+/* Mouse leave */
+$(function () {
+  $(window).mouseleave(function (e) {
+    const modalSeen = sessionStorage.getItem('modalSeen');
+
+    if (e.toElement == null && !modalSeen) {
+      document.documentElement.classList.add('mouse-out');
+    }
+  });
+
+  $('#close-modal').click(function (e) {
+    e.preventDefault();
+    document.documentElement.classList.remove('mouse-out');
+    sessionStorage.setItem('modalSeen', true);
+  });
 });
