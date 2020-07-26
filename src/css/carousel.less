@@ -1,0 +1,128 @@
+.carousel-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .quotes-carousel-container {
+    height: 30em;
+    margin: 0 auto;
+    width: 30em;
+    position: relative;
+
+    .carousel1 {
+      background-image: url(../images/murray1.jpg);
+    }
+    .carousel2 {
+      background-image: url(../images/murray2.jpg);
+    }
+    .carousel3 {
+      background-image: url(../images/murray3.jpg);
+    }
+    .carousel4 {
+      background-image: url(../images/murray4.jpg);
+    }
+    .carousel5 {
+      background-image: url(../images/murray5.jpg);
+    }
+    .carousel6 {
+      background-image: url(../images/murray6.jpg);
+    }
+    .carousel7 {
+      background-image: url(../images/murray7.jpg);
+    }
+    .carousel8 {
+      background-image: url(../images/murray8.jpg);
+    }
+
+    .quotes-carousel {
+      height: 22em;
+      position: relative;
+      width: 100%;
+    }
+
+    .quote {
+      cursor: pointer;
+      margin: 4em auto;
+      opacity: 0;
+      list-style: none;
+      padding: 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(100% + 12em), -50%) scale(0.6);
+      transition: transform 1.5s cubic-bezier(0.7, -0.3, 0.2, 1.3),
+        opacity 0.5s 0.6s ease-out;
+      width: 16em;
+
+      &.previous {
+        opacity: 0.5;
+        transform: translate(-150%, -50%) scale(0.8);
+      }
+      &.current {
+        cursor: default;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+      &.next {
+        opacity: 0.5;
+        transform: translate(50%, -50%) scale(0.8);
+      }
+      &.left {
+        transform: translate(calc(-150% - 12em), -50%) scale(0.6);
+      }
+    }
+
+    .quote-image {
+      background-size: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) inset;
+      height: 7em;
+      width: 7em;
+      position: absolute;
+      top: -7em;
+      left: calc(50% - 3.5em);
+    }
+
+    .quotes-carousel-pips {
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      width: 100%;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        .pip {
+          background: #888;
+          border-radius: 50%;
+          border: 2px solid #555;
+          cursor: pointer;
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          margin: 0 0.1em;
+          padding: 0;
+          transform: scale(0.5);
+          transition: all 0.8s cubic-bezier(0, 1, 0.3, 1);
+
+          &.previous,
+          &.next {
+            background: #ccc;
+            transform: scale(0.6);
+          }
+          &.current {
+            background: #fff;
+            cursor: default;
+            transform: scale(0.7);
+          }
+          &:not(.current):hover {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}

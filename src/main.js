@@ -5,6 +5,7 @@ import './css/badge.less';
 import './css/scroll.less';
 import './css/parallax.less';
 import './css/mouseleave.less';
+import './css/carousel.less';
 
 /**
  * JS for header
@@ -96,5 +97,125 @@ $(function () {
     e.preventDefault();
     document.documentElement.classList.remove('mouse-out');
     sessionStorage.setItem('modalSeen', true);
+  });
+});
+
+/**
+ * Carousel
+ */
+$(function () {
+  let prevInd = 0;
+  let currentInd = 1;
+  let nextInd = 2;
+  let lastInd = $('#quotes-carousel').find('.quote').length - 1;
+
+  $('#quotes-carousel').on('click', '.previous', showQuote);
+  $('#quotes-carousel').on('click', '.next', showQuote);
+  $('#quotes-carousel-pips').on('click', '.pip', showFromPip);
+
+  generatePips();
+  setLeftClass();
+
+  let carouselRunning = true;
+  let carouselRestartTimeout;
+  let interval = setInterval(function () {
+    if (carouselRunning) {
+      showNextQuote();
+    }
+  }, 4000);
+
+  function showNextQuote() {
+    if (currentInd === lastInd) {
+      currentInd = 0;
+    } else {
+      currentInd += 1;
+    }
+
+    updateState(currentInd);
+  }
+
+  function showQuote(event) {
+    let target;
+    if ($(event.target).hasClass('quote')) {
+      target = $(event.target);
+    } else {
+      target = $(event.target).parent();
+    }
+    const index = $('.quote').index(target);
+
+    updateState(index, true);
+  }
+
+  function updateState(ind, pauseTemporary = false) {
+    prevInd = ind === 0 ? lastInd : ind - 1;
+    currentInd = ind;
+    nextInd = ind === lastInd ? 0 : ind + 1;
+
+    updateCarouselPosition();
+    setLeftClass();
+    updatePips();
+
+    if (pauseTemporary) {
+      clearTimeout(carouselRestartTimeout);
+      carouselRunning = false;
+      carouselRestartTimeout = setTimeout(function () {
+        carouselRunning = true;
+      }, 10000);
+    }
+  }
+
+  function updateCarouselPosition() {
+    $('#quotes-carousel').find('.previous').removeClass('previous');
+    $('#quotes-carousel').find('.current').removeClass('current');
+    $('#quotes-carousel').find('.next').removeClass('next');
+
+    const allQuotes = $('#quotes-carousel').find('.quote');
+    $(allQuotes[prevInd]).addClass('previous');
+    $(allQuotes[currentInd]).addClass('current');
+    $(allQuotes[nextInd]).addClass('next');
+  }
+
+  function generatePips() {
+    const listContainer = $('#quotes-carousel-pips').find('ul');
+    for (let iLoop = 0; iLoop < lastInd; iLoop++) {
+      const newPip = $('<li class="pip"></li>');
+      $(listContainer).append(newPip);
+    }
+    updatePips();
+  }
+
+  function updatePips() {
+    $('#quotes-carousel-pips').find('.previous').removeClass('previous');
+    $('#quotes-carousel-pips').find('.current').removeClass('current');
+    $('#quotes-carousel-pips').find('.next').removeClass('next');
+
+    const allQuotePips = $('#quotes-carousel-pips').find('.pip');
+    $(allQuotePips[prevInd]).addClass('previous');
+    $(allQuotePips[currentInd]).addClass('current');
+    $(allQuotePips[nextInd]).addClass('next');
+  }
+
+  function showFromPip(event) {
+    const ind = $('#quotes-carousel-pips li').index(event.target);
+    updateState(ind, true);
+  }
+
+  function setLeftClass() {
+    const allQuotes = $('#quotes-carousel').find('.quote');
+    $('.quote.left').removeClass('left');
+
+    if (prevInd > 0) {
+      $(allQuotes[prevInd - 1]).addClass('left');
+    } else {
+      $(allQuotes[lastInd]).addClass('left');
+    }
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      carouselRunning = false;
+    } else {
+      carouselRunning = true;
+    }
   });
 });
